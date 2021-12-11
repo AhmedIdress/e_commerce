@@ -4,10 +4,12 @@ class CustomText extends StatelessWidget {
   final String text;
   final double size;
   final Color color;
+  final FontWeight fontWeight;
   CustomText({
     required this.text,
     required this.size,
     this.color = Colors.black,
+    this.fontWeight=FontWeight.normal,
   });
 
   @override
@@ -18,6 +20,7 @@ class CustomText extends StatelessWidget {
         style: TextStyle(
           fontSize: size,
           color: color,
+          fontWeight: fontWeight,
         ),
       ),
     );

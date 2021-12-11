@@ -6,7 +6,11 @@ class CustomTextFormField extends StatelessWidget {
   final TextInputType keyboardType;
   final bool obscureText;
   final String initialValue;
+  final FormFieldSetter<String>? onSaved;
+  final FormFieldValidator<String>? validator;
   const CustomTextFormField({
+    required this.onSaved,
+    required this.validator,
     required this.text,
     required this.keyboardType,
     this.obscureText = false,
@@ -26,9 +30,11 @@ class CustomTextFormField extends StatelessWidget {
             color: Colors.grey,
           ),
           TextFormField(
+            validator: validator,
             keyboardType: keyboardType,
             obscureText: obscureText,
             initialValue: initialValue,
+            onSaved: onSaved,
           ),
         ],
       ),

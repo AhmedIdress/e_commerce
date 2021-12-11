@@ -18,7 +18,7 @@ class LoginView extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const LoginWithEmail(),
+              LoginWithEmail(),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 25),
                 child: CustomText(
@@ -26,7 +26,7 @@ class LoginView extends StatelessWidget {
                   size: 20,
                 ),
               ),
-              const LoginWithSocial(),
+              LoginWithSocial(),
             ],
           ),
         ),
