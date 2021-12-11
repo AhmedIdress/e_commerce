@@ -1,5 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
+<<<<<<< HEAD
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+=======
+import 'package:firebase_core/firebase_core.dart';
+>>>>>>> origin/master
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -7,7 +11,10 @@ class AuthViewModel extends GetxController
 {
   final GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+<<<<<<< HEAD
   final FacebookAuth _facebookAuth = FacebookAuth.instance;
+=======
+>>>>>>> origin/master
 
   void googleSignIn () async
   {
@@ -20,6 +27,7 @@ class AuthViewModel extends GetxController
     );
     await _firebaseAuth.signInWithCredential(credential);
   }
+<<<<<<< HEAD
 
   void facebookSignIn() async
   {
@@ -28,4 +36,6 @@ class AuthViewModel extends GetxController
     final credential = FacebookAuthProvider.credential(accessToken);
     await _firebaseAuth.signInWithCredential(credential);
   }
+=======
+>>>>>>> origin/master
 }
