@@ -15,9 +15,9 @@ class MainView extends StatelessWidget {
         body: controller.currentWidget ,
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: controller.newNavIndex,
-          items: [
+          items: const [
             BottomNavigationBarItem(
-              icon: const Image(
+              icon: Image(
                 image: AssetImage('assets/images/Icon_Explore.png'),
               ),
               label: '',
@@ -28,7 +28,7 @@ class MainView extends StatelessWidget {
               ),
             ),
             BottomNavigationBarItem(
-              icon: const Image(
+              icon: Image(
                 image: AssetImage('assets/images/Icon_Cart.png'),
               ),
               label: '',
@@ -39,7 +39,7 @@ class MainView extends StatelessWidget {
               ),
             ),
             BottomNavigationBarItem(
-              icon: const Image(
+              icon: Image(
                 image: AssetImage('assets/images/Icon_User.png'),
               ),
               label: '',

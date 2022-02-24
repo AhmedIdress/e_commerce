@@ -1,6 +1,7 @@
 import 'package:e_commerce/core/services/fire_store_user.dart';
+import 'package:e_commerce/helper/local_storage.dart';
 import 'package:e_commerce/model/user_model.dart';
-import 'package:e_commerce/view/main/main_view.dart';
+import 'package:e_commerce/view/control_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
@@ -12,9 +13,10 @@ class AuthViewModel extends GetxController {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final FacebookAuth _facebookAuth = FacebookAuth.instance;
   late final String email, password;
-  late final String? name;
+  String? name;
   late Rx<User?> _user;
   String? get user => _user.value?.email;
+  final LocalStorage _localStorage = Get.find<LocalStorage>();
 
   @override
   void onInit() {
@@ -35,7 +37,7 @@ class AuthViewModel extends GetxController {
     );
     await _firebaseAuth.signInWithCredential(credential).then((value) {
       addUserToFirestore(value);
-      Get.offAll(() => const MainView());
+      Get.offAll(() => const ControlView());
     });
   }
 
@@ -47,14 +49,21 @@ class AuthViewModel extends GetxController {
     await _firebaseAuth.signInWithCredential(credential).then((value) {
       print(value);
       addUserToFirestore(value);
-      Get.offAll(() => const MainView());
+      Get.offAll(() => const ControlView());
     });
   }
 
   void signInWithEmailAndPassword() async {
     try {
       await _firebaseAuth.signInWithEmailAndPassword(
-          email: email, password: password); Get.offAll(() => const MainView());
+          email: email, password: password).then((value) {
+            value.user?.uid;
+            FireStoreUser().getUserFromFireSore(value.user!.uid).then((data) {
+              print(value.user?.uid);
+              setUser(data);
+            });
+
+      }); Get.offAll(() => const ControlView());
     } catch (e) {
       Get.snackbar("error", e.toString(),
           snackPosition: SnackPosition.BOTTOM);
@@ -67,7 +76,7 @@ class AuthViewModel extends GetxController {
           .createUserWithEmailAndPassword(email: email, password: password)
           .then((value) {
         addUserToFirestore(value);
-        Get.offAll(() => const MainView());
+        Get.offAll(() => const ControlView());
       });
     } catch (e) {
       print(e.toString());
@@ -76,11 +85,17 @@ class AuthViewModel extends GetxController {
   }
 
   void addUserToFirestore(UserCredential value) async {
-    await FireStoreUser().addUserToFireSore(UserModel(
+    UserModel model = UserModel(
         uid: value.user?.uid,
         email: value.user?.email,
-        name: name /*?? value.user!.displayName*/,
-        pic: ''));
+        name: name ?? value.user!.displayName,
+        pic: '');
+    await FireStoreUser().addUserToFireSore(model);
+    setUser(model);
+  }
+
+  void setUser(UserModel userModel)async{
+    await _localStorage.setUserData(userModel);
   }
 
   void logOut() async {

@@ -4,8 +4,9 @@ import 'package:e_commerce/view/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 
 class BottomBar extends StatelessWidget {
-  const BottomBar({Key? key,required this.buttonText,required this.price,required this.upperPriceText,}) : super(key: key);
+  const BottomBar({Key? key,required this.buttonText,required this.onPress,required this.price,required this.upperPriceText,}) : super(key: key);
   final String buttonText,price,upperPriceText;
+  final Function() onPress;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -32,7 +33,7 @@ class BottomBar extends StatelessWidget {
           ),
           const Spacer(),
           CustomButton(
-              text: buttonText, width: 180, textSize: 18, onPressed: () {}),
+              text: buttonText, width: 180, textSize: 18, onPressed: onPress,),
         ],
       ),
     );

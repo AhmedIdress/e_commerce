@@ -1,4 +1,5 @@
 import 'package:e_commerce/constant.dart';
+import 'package:e_commerce/model/bestselling_model.dart';
 import 'package:e_commerce/view/main/home_view/product_details_view.dart';
 import 'package:e_commerce/view/widgets/custom_appbar.dart';
 import 'package:e_commerce/view/widgets/custom_text.dart';
@@ -38,7 +39,7 @@ class CategoryResultView extends StatelessWidget {
                     return
                       GestureDetector(
                         onTap: (){
-                          Get.to(const ProductDetailsView());
+                          //Get.to(ProductDetailsView(model: BestsellingModel(),));
                         },
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
