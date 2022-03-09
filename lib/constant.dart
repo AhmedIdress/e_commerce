@@ -6,3 +6,6 @@ const Color primyColor = Color.fromRGBO(112, 112, 112, 1.0);
 enum DeliveryEnum{
   standard,nextDay,nominated,
 }
+enum ProcessEnum{
+  transit,delivered,
+}

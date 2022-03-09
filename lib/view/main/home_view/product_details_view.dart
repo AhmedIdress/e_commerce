@@ -168,6 +168,8 @@ class ProductDetailsView extends StatelessWidget {
                   productId: model.productId,
                 ),
               );
+              Get.back();
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('product add to chart'),),);
             },
             upperPriceText: 'total',
             price: model.price,

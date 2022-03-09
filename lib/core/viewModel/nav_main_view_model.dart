@@ -9,10 +9,10 @@ class NavMainViewModel extends GetxController
   int _currentIndex =0;
   int get newNavIndex => _currentIndex;
   Widget get currentWidget => _currentView[_currentIndex];
-  final List<Widget> _currentView = const[
-     ExploreView(),
-     CartView(),
-     AccountView(),
+  final List<Widget> _currentView = [
+      ExploreView(),
+      const CartView(),
+      const AccountView(),
   ];
   void navChange(int newIndex)
   {

@@ -27,4 +27,22 @@ class LocalStorage extends GetxController{
       value.clear();
     });
   }
+
+
+
+
+  Future<void> setAddressData(List<String> list) async
+  {
+    await _sharedPreferences.then((value) {
+      value.setStringList('AddressData', list );
+    });
+  }
+  Future<List<String>?> getAddressData() async
+  {
+    List<String>? list;
+    await _sharedPreferences.then((value) {
+      list = value.getStringList('AddressData');
+    });
+    return list;
+  }
 }

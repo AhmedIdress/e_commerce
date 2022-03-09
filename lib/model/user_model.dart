@@ -1,7 +1,7 @@
 class UserModel
 {
-  String? uid, email, name, pic;
-  UserModel({ this.uid, this.email, this.name, this.pic});
+  late String uid, email, name, pic;
+  UserModel({ required this.uid, required this.email, required this.name, required this.pic});
   UserModel.fromJson(Map<String,dynamic>map)
   {
     uid=map['uid'];

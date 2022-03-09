@@ -35,15 +35,16 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   get: ^4.3.8
-  google_sign_in: ^5.2.1
+  google_sign_in: ^5.2.4
   firebase_core: ^1.10.5
   firebase_auth: ^3.3.3
-  flutter_facebook_auth: ^3.5.7
+  flutter_facebook_auth: ^4.1.1
   cloud_firestore: ^3.1.5
   sqflite: ^2.0.2
   path: ^1.8.0
   shared_preferences: ^2.0.13
   flutter_svg: ^1.0.3
+  connectivity_plus: ^2.2.1
 
 dev_dependencies:
   flutter_test:
@@ -72,6 +73,7 @@ flutter:
     - assets/images/
     - assets/images/account/
     - assets/images/svg/
+    - assets/images/order/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

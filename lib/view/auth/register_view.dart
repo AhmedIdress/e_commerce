@@ -41,7 +41,7 @@ class RegisterView extends GetWidget<AuthViewModel> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      CustomText(
+                      const CustomText(
                         text:'Sign Up',
                         size: 30,
                       ),

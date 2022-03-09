@@ -1,5 +1,6 @@
 import 'package:e_commerce/constant.dart';
 import 'package:e_commerce/core/viewModel/checkout_view_model.dart';
+import 'package:e_commerce/view/main/account_view/tack_order/track_order.dart';
 import 'package:e_commerce/view/widgets/checkout_status.dart';
 import 'package:e_commerce/view/widgets/custom_appbar.dart';
 import 'package:e_commerce/view/widgets/custom_button.dart';
@@ -12,6 +13,7 @@ class CheckoutView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return GetBuilder<CheckoutViewModel>(
       init: CheckoutViewModel(),
       builder: (controller) => Scaffold(
@@ -33,47 +35,83 @@ class CheckoutView extends StatelessWidget {
                       Get.back();
                     },
                   ),
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.only(
-                      left: 75,
+                      left: size.width * .2,
                     ),
-                    child: CustomText(text: 'Checkout', size: 20),
+                    child: const CustomText(text: 'Checkout', size: 20),
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 35,
+              SizedBox(
+                height: size.height * .065,
               ),
-              CheckoutStatus(
+              HorizontalCheckoutState(
                 currentState: controller.currentState,
               ),
-              const SizedBox(height: 30,),
-              controller.currentWidget,
+              SizedBox(
+                height: size.height * .05,
+              ),
+              Expanded(
+                  child: Transform.translate(
+                offset: const Offset(1, 0),
+                child: controller.currentWidget,filterQuality: FilterQuality.high,
+              ))
+              /*AnimatedContainer(transform: Matrix4.translation(translation),
+                child: controller.currentWidget,
+                duration: const Duration(
+                  milliseconds: 1500,
+                ),
+              ),*/
             ],
           ),
         ),
         bottomNavigationBar: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0,vertical: 5,),
+          padding: const EdgeInsets.symmetric(
+            horizontal: 20.0,
+            vertical: 5,
+          ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SizedBox(width: 150,height: 50,
-                child: controller.currentState !=0? OutlinedButton(
-                  onPressed: () {controller.stateChangePrevious();},
-                  style: OutlinedButton.styleFrom(
-                    side: const BorderSide(color: primaryColor,)
-                  ),
-                  child: CustomText(
-                    text: 'back'.toUpperCase(),
-                    size: 18,
-                  ),
-                ):Container(),
+              SizedBox(
+                width: 150,
+                height: 50,
+                child: controller.currentState != 0
+                    ? OutlinedButton(
+                        onPressed: () {
+                          controller.stateChangePrevious();
+                        },
+                        style: OutlinedButton.styleFrom(
+                            side: const BorderSide(
+                          color: primaryColor,
+                        )),
+                        child: CustomText(
+                          text: 'back'.toUpperCase(),
+                          size: 18,
+                        ),
+                      )
+                    : Container(),
               ),
               CustomButton(
-                text: controller.currentState !=2? 'next':'Deliver',
+                text: controller.currentState != 2 ? 'next' : 'Deliver',
                 width: 150,
                 textSize: 18,
-                onPressed: () {controller.stateChangeNext();},
+                onPressed: () {
+                  if (controller.currentState ==2) {
+                    Get.offAll(const TrackOrder(),transition: Transition.leftToRight,
+                        duration: const Duration(milliseconds: 1500));
+                  }
+                  else if (controller.currentState == 1) {
+                    if (controller.formState.currentState!.validate()) {
+                      controller.formState.currentState!.save();
+                      controller.stateChangeNext();
+                      return;
+                    }
+                  }else if (controller.currentState != 1) {
+                    controller.stateChangeNext();
+                  }
+                },
               ),
             ],
           ),

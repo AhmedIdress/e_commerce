@@ -19,7 +19,7 @@ class LoginWithEmail extends GetWidget<AuthViewModel> {
         borderRadius: BorderRadius.circular(5),
       ),
       child: Form(
-        key:_globalKey ,
+        key: _globalKey,
         child: Column(
           children: [
             Row(
@@ -27,9 +27,9 @@ class LoginWithEmail extends GetWidget<AuthViewModel> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.baseline,
                   textBaseline: TextBaseline.alphabetic,
-                  children: [
+                  children: const [
                     CustomText(text: 'Welcome,', size: 35.0),
-                    const SizedBox(
+                    SizedBox(
                       height: 8.0,
                     ),
                     CustomText(
@@ -42,9 +42,19 @@ class LoginWithEmail extends GetWidget<AuthViewModel> {
                 const Spacer(),
                 TextButton(
                   onPressed: () {
-                    Get.to(()=>RegisterView());
+                    Get.to(
+                      RegisterView(),
+                      transition: Transition.cupertino,
+                      duration: const Duration(
+                        milliseconds: 1500,
+                      ),
+                    );
                   },
-                  child: CustomText(text: 'Sign up', size: 18.0,color: primaryColor,),
+                  child: const CustomText(
+                    text: 'Sign up',
+                    size: 18.0,
+                    color: primaryColor,
+                  ),
                 ),
               ],
             ),
@@ -56,11 +66,10 @@ class LoginWithEmail extends GetWidget<AuthViewModel> {
               keyboardType: TextInputType.emailAddress,
               initialValue: 'iamdavid@gmail.com',
               onSaved: (String? newValue) {
-                controller.email=newValue!;
+                controller.email = newValue!;
               },
               validator: (String? value) {
-                if(value==null)
-                {
+                if (value == null) {
                   print('null error');
                 }
               },
@@ -74,11 +83,10 @@ class LoginWithEmail extends GetWidget<AuthViewModel> {
               obscureText: true,
               initialValue: 'facebook12',
               onSaved: (String? newValue) {
-                controller.password=newValue!;
+                controller.password = newValue!;
               },
               validator: (String? value) {
-                if(value==null)
-                {
+                if (value == null) {
                   print('null error');
                 }
               },
@@ -88,7 +96,7 @@ class LoginWithEmail extends GetWidget<AuthViewModel> {
               children: [
                 TextButton(
                   onPressed: () {},
-                  child: CustomText(
+                  child: const CustomText(
                     text: 'Forget Password?',
                     size: 14.0,
                   ),
@@ -101,13 +109,12 @@ class LoginWithEmail extends GetWidget<AuthViewModel> {
                 text: 'sign in',
                 width: double.infinity,
                 textSize: 18.0,
-                onPressed: (){
+                onPressed: () {
                   _globalKey.currentState!.save();
-                  if(_globalKey.currentState!.validate())
-                  {
+                  if (_globalKey.currentState!.validate()) {
                     controller.signInWithEmailAndPassword();
-                  }
 
+                  }
                 },
               ),
             ),

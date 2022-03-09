@@ -26,7 +26,7 @@ class LoginView extends StatelessWidget {
                   size: 20,
                 ),
               ),
-              LoginWithSocial(),
+              const LoginWithSocial(),
             ],
           ),
         ),

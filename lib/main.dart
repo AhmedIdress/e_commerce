@@ -1,12 +1,9 @@
 import 'package:e_commerce/constant.dart';
-import 'package:e_commerce/core/viewModel/cart_view_model.dart';
 import 'package:e_commerce/helper/binding.dart';
 import 'package:e_commerce/view/control_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sqflite/sqflite.dart';
-
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,4 +29,5 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
 

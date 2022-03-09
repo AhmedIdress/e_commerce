@@ -15,7 +15,6 @@ class CartViewModel extends GetxController {
   final ValueNotifier<bool> _loading = ValueNotifier(false);
   ValueNotifier<bool> get loading=>_loading;
 
-
   @override
   void onInit() {
     super.onInit();
@@ -74,5 +73,9 @@ class CartViewModel extends GetxController {
       await DatabaseHelper.db.update(_cartProducts[index]);
       update();
     }
+  }
+  void refrichState()
+  {
+    update();
   }
 }

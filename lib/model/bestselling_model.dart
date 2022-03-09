@@ -1,5 +1,5 @@
 class BestsellingModel {
-  late String image, name, describe, color, size,productId,price;
+  late String image, name, describe, color, size,productId,price,catigory;
   BestsellingModel({
     required this.name,
     required this.image,
@@ -8,16 +8,18 @@ class BestsellingModel {
     required this.color,
     required this.size,
     required this.productId,
+    required this.catigory,
   });
 
   BestsellingModel.fromJson(Map<String, dynamic> map) {
-    image = map['image']!;
-    name = map['name']!;
-    describe = map['describe']!;
-    price = map['price']!;
-    color = map['color']!;
-    size = map['size']!;
-    productId = map['productId']!;
+    image = map['image'];
+    name = map['name'];
+    describe = map['describe'];
+    price = map['price'];
+    color = map['color'];
+    size = map['size'];
+    productId = map['productId'];
+    catigory = map['catigory'];
   }
   Map<String, dynamic> toJson() {
     return {
@@ -28,6 +30,7 @@ class BestsellingModel {
       'color': color,
       'size': size,
       'productId': productId,
+      'catigory': catigory,
     };
   }
 }

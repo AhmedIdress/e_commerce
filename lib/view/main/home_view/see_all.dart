@@ -6,10 +6,9 @@ import 'package:e_commerce/view/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CategoryResultView extends StatelessWidget {
-  const CategoryResultView({Key? key, required this.catigory})
-      : super(key: key);
-  final String catigory;
+class SeeAll extends StatelessWidget {
+  const SeeAll({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -32,11 +31,11 @@ class CategoryResultView extends StatelessWidget {
                         Get.back();
                       },
                       icon: const Icon(Icons.arrow_back_ios)),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 90.0),
+                  const Padding(
+                    padding: EdgeInsets.only(left: 75.0),
                     child: Center(
                       child: CustomText(
-                        text: catigory,
+                        text: 'All products',
                         size: 20,
                       ),
                     ),
@@ -48,7 +47,7 @@ class CategoryResultView extends StatelessWidget {
               ),
               Expanded(
                 child: GridView.builder(
-                    itemCount: controller.catigory[catigory]?.length,
+                    itemCount: controller.bestsellingModel.length,
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
@@ -61,7 +60,7 @@ class CategoryResultView extends StatelessWidget {
                         onTap: () {
                           Get.to(
                             ProductDetailsView(
-                              model: controller.catigory[catigory]![index],
+                              model: controller.bestsellingModel[index],
                             ),
                             duration: const Duration(milliseconds: 1500),
                             transition: Transition.topLevel,
@@ -74,25 +73,24 @@ class CategoryResultView extends StatelessWidget {
                           children: [
                             Image(
                               image: NetworkImage(
-                              controller.catigory[catigory]![index].image),
+                                  controller.bestsellingModel[index].image),
                               fit: BoxFit.cover,
                               height: size.height * .3,
                               width: size.height * .4,
                             ),
                             CustomText(
-                              text: controller.catigory[catigory]![index].name,
+                              text: controller.bestsellingModel[index].name,
                               size: 16,
                               fontWeight: FontWeight.bold,
                             ),
                             CustomText(
-                              text: controller
-                                  .catigory[catigory]![index].describe,
+                              text: controller.bestsellingModel[index].describe,
                               size: 16,
                               color: Colors.grey,
                             ),
                             CustomText(
                               text: '\$' +
-                                  controller.catigory[catigory]![index].price,
+                                  controller.bestsellingModel[index].price,
                               size: 16,
                               color: primaryColor,
                             ),

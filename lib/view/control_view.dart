@@ -6,15 +6,10 @@ import 'package:get/get.dart';
 
 class ControlView extends GetWidget<AuthViewModel> {
   const ControlView({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    return Obx((){
-      return
-        controller.user == null?
-        const LoginView():
-        const MainView();
+    return Obx(() {
+      return controller.user == null ? const LoginView() : const MainView();
     });
   }
-
 }
