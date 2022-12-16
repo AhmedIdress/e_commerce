@@ -58,7 +58,7 @@ class TrackOrder extends StatelessWidget {
                         onTap:(){
                           Get.to(OrderProcess(id: controller.content[index].id,state: controller.content[index].state,),
                               transition: Transition.zoom,
-                              duration: const Duration(milliseconds: 1500));
+                              duration: const Duration(milliseconds: 300));
                         },
                         child: SizedBox(
                           height: size.height*.2,

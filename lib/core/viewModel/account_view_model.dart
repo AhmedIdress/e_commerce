@@ -39,7 +39,7 @@ class AccountViewModel extends GetxController{
     await FirebaseAuth.instance.signOut();
     await _localStorage.deleteUserData();
     Get.offAll( const ControlView(),transition: Transition.upToDown,
-        duration: const Duration(milliseconds: 1500));
+        duration: const Duration(milliseconds: 300));
   }
 
 }

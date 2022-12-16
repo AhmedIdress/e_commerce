@@ -63,7 +63,7 @@ class CategoryResultView extends StatelessWidget {
                             ProductDetailsView(
                               model: controller.catigory[catigory]![index],
                             ),
-                            duration: const Duration(milliseconds: 1500),
+                            duration: const Duration(milliseconds: 300),
                             transition: Transition.topLevel,
                             curve: Curves.bounceInOut,
                           );

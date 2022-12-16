@@ -186,7 +186,7 @@ class CartView extends StatelessWidget {
                             buttonText: 'CHECKOUT',
                             price: '\$${controller.totalPrice}',
                             onPress: () {
-                              Get.to(const CheckoutView(),duration: const Duration(milliseconds: 1500),
+                              Get.to(const CheckoutView(),duration: const Duration(milliseconds: 300),
                                 transition: Transition.downToUp,
                                 curve: Curves.bounceInOut,);
                             },

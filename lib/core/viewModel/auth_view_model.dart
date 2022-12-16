@@ -37,7 +37,7 @@ class AuthViewModel extends GetxController {
     await _firebaseAuth.signInWithCredential(credential).then((value) {
       addUserToFirestore(value);
       Get.offAll(const ControlView(),transition: Transition.downToUp,
-          duration: const Duration(milliseconds: 1500));
+          duration: const Duration(milliseconds: 300));
     });
   }
 
@@ -50,7 +50,7 @@ class AuthViewModel extends GetxController {
       print(value);
       addUserToFirestore(value);
       Get.offAll( const ControlView(),transition: Transition.downToUp,
-          duration: const Duration(milliseconds: 1500));
+          duration: const Duration(milliseconds: 300));
     });
   }
 
@@ -65,7 +65,7 @@ class AuthViewModel extends GetxController {
       });
       Get.offAll(const ControlView(),
           transition: Transition.downToUp,
-          duration: const Duration(milliseconds: 1500));
+          duration: const Duration(milliseconds: 300));
     } catch (e) {
       Get.snackbar("error", e.toString(), snackPosition: SnackPosition.BOTTOM);
     }
@@ -78,7 +78,7 @@ class AuthViewModel extends GetxController {
           .then((value) {
         addUserToFirestore(value);
         Get.offAll( const ControlView(),transition: Transition.downToUp,
-            duration: const Duration(milliseconds: 1500));
+            duration: const Duration(milliseconds: 300));
       });
     } catch (e) {
       print(e.toString());

@@ -60,7 +60,7 @@ class CheckoutView extends StatelessWidget {
               /*AnimatedContainer(transform: Matrix4.translation(translation),
                 child: controller.currentWidget,
                 duration: const Duration(
-                  milliseconds: 1500,
+                  milliseconds: 300,
                 ),
               ),*/
             ],
@@ -100,7 +100,7 @@ class CheckoutView extends StatelessWidget {
                 onPressed: () {
                   if (controller.currentState ==2) {
                     Get.offAll(const TrackOrder(),transition: Transition.leftToRight,
-                        duration: const Duration(milliseconds: 1500));
+                        duration: const Duration(milliseconds: 300));
                   }
                   else if (controller.currentState == 1) {
                     if (controller.formState.currentState!.validate()) {

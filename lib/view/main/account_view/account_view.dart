@@ -26,8 +26,12 @@ class AccountView extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    CircleAvatar(
-                      radius: size.width * .166,
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(
+                          size.width * .166,
+                        ),
+                      ),
                       child: const Image(
                         image: NetworkImage('https://firebasestorage.googleapis.com/v0/b/ecommerce-1cf19.appspot.com/o/e-commerce%2Fimages%2Fuser%2FAvatar.png?alt=media&token=d981a0ab-4313-471d-9c82-cd34a409ffae'),
                       ),
@@ -74,11 +78,11 @@ class AccountView extends StatelessWidget {
                             break;
                           case 1:
                             Get.to(const ShippingAddress(),transition: Transition.leftToRight,
-                                duration: const Duration(milliseconds: 1500));
+                                duration: const Duration(milliseconds: 300));
                             break;
                           case 2:
                             Get.to(const TrackOrder(),transition: Transition.leftToRight,
-                                duration: const Duration(milliseconds: 1500));
+                                duration: const Duration(milliseconds: 300));
                             break;
                           case 3:
                             ScaffoldMessenger.of(context).showSnackBar(

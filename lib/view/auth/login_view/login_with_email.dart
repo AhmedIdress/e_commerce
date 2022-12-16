@@ -46,7 +46,7 @@ class LoginWithEmail extends GetWidget<AuthViewModel> {
                       RegisterView(),
                       transition: Transition.cupertino,
                       duration: const Duration(
-                        milliseconds: 1500,
+                        milliseconds: 300,
                       ),
                     );
                   },

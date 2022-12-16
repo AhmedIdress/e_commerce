@@ -32,7 +32,7 @@ class CategoriesPart extends StatelessWidget {
                 return GestureDetector(
                   onTap: () => Get.to(
                     CategoryResultView(catigory: controller.categoryModel[index].name,),
-                    duration: const Duration(milliseconds: 1500),
+                    duration: const Duration(milliseconds: 300),
                     transition: Transition.zoom,
                     curve: Curves.bounceInOut,
                   ),

@@ -62,7 +62,7 @@ class SeeAll extends StatelessWidget {
                             ProductDetailsView(
                               model: controller.bestsellingModel[index],
                             ),
-                            duration: const Duration(milliseconds: 1500),
+                            duration: const Duration(milliseconds: 300),
                             transition: Transition.topLevel,
                             curve: Curves.bounceInOut,
                           );
